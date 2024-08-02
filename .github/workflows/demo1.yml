@@ -3,6 +3,11 @@ on:
   workflow_dispatch:
   pull_request:
     types: [opened, reopened, closed ]
+  push:
+    branches: 
+      - main
+      - 'release/*' # matches any branch whose name starts with 'release/' and doesn't contain a '/'
+      - 'feature/**' # matches any branch whose name starts with 'feature/' and may contain another '/'
 jobs:
   deploy:
     runs-on: ubuntu-latest
