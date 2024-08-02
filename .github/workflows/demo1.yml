@@ -2,10 +2,7 @@ name: Events Demo 1
 on:
   workflow_dispatch:
   pull_request:
-    types:
-      -opened
-      -reopened
-      -closed 
+    types: [opened, reopened, closed ]
 jobs:
   deploy:
     runs-on: windows-latest
@@ -13,7 +10,7 @@ jobs:
       - name: Output event data
         run: echo "${{ toJSON(github.event) }}"
       - name: Get code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Install dependencies
         run: npm ci
       - name: Test code
